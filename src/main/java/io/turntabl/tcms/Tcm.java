@@ -1,10 +1,6 @@
 package io.turntabl.tcms;
 
-import com.sun.security.ntlm.Client;
-import com.sun.security.ntlm.NTLMException;
-
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,9 +10,9 @@ import java.util.Scanner;
 public class Tcm {
 
 
-        public static void main(String[] args) throws IOException, NTLMException {
+        public static void main(String[] args) throws IOException{
 
-                Client c = new Client("ffa","reafa","afafa","afassss",'');
+                Client c = new Client("francis","345532","faf@gmail","fadd55555");
                 boolean exists = Files.exists(Paths.get("./db.csv"));
                 String fileName = "db.csv";
                 String line;

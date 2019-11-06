@@ -1,7 +1,6 @@
 package io.turntabl.tcms;
 
-import com.sun.security.ntlm.Client;
-import com.sun.security.ntlm.NTLMException;
+
 import org.junit.Test;
 
 import java.io.IOException;
@@ -13,8 +12,8 @@ public class TcmTest {
 
 
     @Test
-    public void testClient() throws IOException, NTLMException {
-        Client c = new Client("Jim", "3332", "kamponsah","This");
+    public void testClient() throws IOException {
+        Client c = new Client("glo","54422","gaga@gmail","fafd3444");
         assertEquals("Jim", c.nameToWriteToFile());
     }
 
