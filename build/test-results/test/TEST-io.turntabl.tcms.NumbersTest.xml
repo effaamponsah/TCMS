@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="io.turntabl.tcms.NumbersTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-05T17:49:26" hostname="Aspire-V5-473" time="0.003">
+<testsuite name="io.turntabl.tcms.NumbersTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-11-05T17:51:13" hostname="Aspire-V5-473" time="0.008">
   <properties/>
-  <testcase name="testLessThanZero" classname="io.turntabl.tcms.NumbersTest" time="0.003"/>
+  <testcase name="testGreaterThanAThousand" classname="io.turntabl.tcms.NumbersTest" time="0.002"/>
+  <testcase name="testAThousand" classname="io.turntabl.tcms.NumbersTest" time="0.001"/>
+  <testcase name="testZero" classname="io.turntabl.tcms.NumbersTest" time="0.0"/>
+  <testcase name="testLessThanZero" classname="io.turntabl.tcms.NumbersTest" time="0.0"/>
+  <testcase name="testGreaterThanZero" classname="io.turntabl.tcms.NumbersTest" time="0.001"/>
+  <testcase name="testLessThanAThousand" classname="io.turntabl.tcms.NumbersTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
