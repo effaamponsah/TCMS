@@ -8,7 +8,7 @@ public class NumbersTest {
 
     @Test
     public void testLessThanZero() {
-        boolean result = Numbers.isGreaterThanZeroAndLessThanAThousand(-1);
+        boolean result = Numbers.isGreaterThanZeroAndLessThanAThousand(-3);
         assertFalse(result);
     }
 
