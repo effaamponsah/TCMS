@@ -2,15 +2,18 @@ package io.turntabl.tcms;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 public class ClientManagementSystem {
 
-    public static void main (String[] args){
+    public static void main (String[] args) throws IOException {
 
         // declare a variable that will store the client details
         String userInput;
+
+        String clientId;
         String clientName;
         String clientAddress;
         String clientTelephoneNumber;
@@ -19,6 +22,14 @@ public class ClientManagementSystem {
 
         //declare a scanner object to read the command line input by user
         Scanner sn = new Scanner(System.in);
+
+        //String id = sn.next();
+        //String userName = sn.next();
+        //String phone = sn.next();
+        //String email = sn.next();
+        //String address = sn.next();
+        //Client newClient = new Client(id, userName, phone, email, address);
+        //newClient.writeToFile();
 
         //loop the utility in loop until the user makes the choice to exit
         while(true){
@@ -40,22 +51,32 @@ public class ClientManagementSystem {
             switch(userInput){
                 case "1":
                     //Enter Client Details
+                    System.out.println("*.Enter Client ID. *");
+                    String id = sn.nextLine();
+
                     System.out.println("*.Enter Client Name. *");
-                    clientName = sn.nextLine();
-                    System.out.println("*.Enter Client Address. *");
-                    clientAddress = sn.nextLine();
-                    System.out.println("*.Enter Telephone Number. *");
-                    clientTelephoneNumber = sn.nextLine();
+                    String userName = sn.nextLine();
+
+                    System.out.println("*.Enter Client Telephone. *");
+                    String phone = sn.nextLine();
+
                     System.out.println("*.Enter Email Address. *");
-                    clientEmailAddress = sn.nextLine();
-                    boolean proceed = Validation.isword(clientEmailAddress);
+                    String email = sn.nextLine();
+
+                    System.out.println("*.Enter Address. *");
+                    String address = sn.nextLine();
+
+                    Client newClient = new Client(id, userName, phone, email, address);
+                    newClient.writeToFile();
+
+                    boolean proceed = Validation.isword(clientEmailAddress=email);
                    while(proceed == false){
                        System.out.println("*.Enter Email Address. *");
                        clientEmailAddress = sn.nextLine();
                        proceed = Validation.isword(clientEmailAddress);
                    }
-                    System.out.println(proceed);
-                    System.out.println("Details saved successfully.");
+
+                   System.out.println("Details saved successfully.");
                     break;
                 case "2":
 //                   Client searchClient = searchClient.searchClient(1,"Jude");
