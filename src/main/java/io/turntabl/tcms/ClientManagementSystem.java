@@ -57,13 +57,13 @@ public class ClientManagementSystem {
                     System.out.println("*.Enter Client Name. *");
                     String userName = sn.nextLine();
 
-                    System.out.println("*.Enter Client Address. *");
+                    System.out.println("*.Enter Client Telephone. *");
                     String phone = sn.nextLine();
 
-                    System.out.println("*.Enter Telephone Number. *");
+                    System.out.println("*.Enter Email Address. *");
                     String email = sn.nextLine();
 
-                    System.out.println("*.Enter Email Address. *");
+                    System.out.println("*.Enter Address. *");
                     String address = sn.nextLine();
 
                     Client newClient = new Client(id, userName, phone, email, address);

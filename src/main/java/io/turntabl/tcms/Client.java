@@ -3,7 +3,7 @@ package io.turntabl.tcms;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Client extends Tcm{
+public class Client extends ClientManagementSystem{
 
         private String id;
         private String name;
