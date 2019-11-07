@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class ClientManagementSystem {
 
-    public static void main (String[] args) throws IOException {
+    public static void main (String[] args) {
 
         // declare a variable that will store the client details
         String userInput;
@@ -67,7 +67,9 @@ public class ClientManagementSystem {
                     String address = sn.nextLine();
 
                     Client newClient = new Client(id, userName, phone, email, address);
+                    System.out.println(" Matched clients ");
                     newClient.writeToFile();
+                    System.out.println("\n");
 
                     boolean proceed = Validation.isword(clientEmailAddress=email);
                    while(proceed == false){
@@ -79,6 +81,9 @@ public class ClientManagementSystem {
                    System.out.println("Details saved successfully.");
                     break;
                 case "2":
+                    System.out.println("*.Please Enter your clients name*");
+                    String searchName = sn.nextLine();
+                    System.out.println(Utils.searchByName(searchName));
 //                   Client searchClient = searchClient.searchClient(1,"Jude");
 
                     //Search for a Client
