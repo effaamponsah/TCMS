@@ -48,6 +48,13 @@ public class ClientManagementSystem {
                     clientTelephoneNumber = sn.nextLine();
                     System.out.println("*.Enter Email Address. *");
                     clientEmailAddress = sn.nextLine();
+                    boolean proceed = Validation.isword(clientEmailAddress);
+                   while(proceed == false){
+                       System.out.println("*.Enter Email Address. *");
+                       clientEmailAddress = sn.nextLine();
+                       proceed = Validation.isword(clientEmailAddress);
+                   }
+                    System.out.println(proceed);
                     System.out.println("Details saved successfully.");
                     break;
                 case "2":
