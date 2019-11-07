@@ -3,7 +3,7 @@ package io.turntabl.tcms;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Client extends ClientManagementSystem{
+public class Client {
 
         private String id;
         private String name;
@@ -12,7 +12,7 @@ public class Client extends ClientManagementSystem{
         private String address;
 
 
-        public Client(String id, String name, String phone, String email, String address) throws IOException {
+        public Client(String id, String name, String phone, String email, String address) {
             this.id = id;
             this.name = name;
             this.phone = phone;
@@ -24,10 +24,18 @@ public class Client extends ClientManagementSystem{
         return name;
     }
 
-
-
     public String getId() {
         return id;
+
+    @Override
+    public String toString() {
+        return "Client Details:  " +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                "\n";
     }
 
     public void writeToFile() {
