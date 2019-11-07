@@ -26,7 +26,7 @@ public class Client {
 
     public String getId() {
         return id;
-
+    }
     @Override
     public String toString() {
         return "Client Details:  " +
