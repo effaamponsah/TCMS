@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-public class ClientManagementSystem extends Tcm{
+public class ClientManagementSystem {
 
     public static void main (String[] args) throws IOException {
 
