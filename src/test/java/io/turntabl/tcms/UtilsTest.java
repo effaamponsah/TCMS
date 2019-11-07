@@ -2,6 +2,8 @@ package io.turntabl.tcms;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class UtilsTest {
@@ -13,6 +15,16 @@ public class UtilsTest {
     @Test
     public void testDistance2(){
         assertEquals(4, Utils.lavenstine("Dennis", "Bernice"));
+    }
+
+    @Test
+    public void testReadingDataFromFile(){
+        System.out.println(Utils.readFromFile());
+    }
+       @Test
+    public void testMatchingStrings() {
+//        assertEquals(Arrays.asList(c),Utils.searchByName("Dennis"));
+        Utils.searchByName("Francis");
     }
 
 }
