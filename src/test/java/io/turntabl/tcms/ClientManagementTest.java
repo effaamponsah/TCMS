@@ -16,6 +16,7 @@ public class ClientManagementTest {
         assertEquals("francis", c.getName());
     }
 
+
     @Test
     public void testWriteToFile() throws IOException {
         Client c = new Client("4643","chris","02340001111","tee@ymail.com","madina");

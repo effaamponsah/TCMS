@@ -24,6 +24,12 @@ public class Client extends ClientManagementSystem{
         return name;
     }
 
+
+
+    public String getId() {
+        return id;
+    }
+
     public void writeToFile() {
 
             FileWriter f = null;

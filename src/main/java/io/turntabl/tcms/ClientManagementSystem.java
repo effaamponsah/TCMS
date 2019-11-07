@@ -1,10 +1,11 @@
 package io.turntabl.tcms;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Scanner;
+
+import static jdk.nashorn.internal.objects.NativeArray.filter;
 
 public class ClientManagementSystem {
 
@@ -70,7 +71,7 @@ public class ClientManagementSystem {
                     newClient.writeToFile();
 
                     boolean proceed = Validation.isword(clientEmailAddress=email);
-                   while(proceed == false){
+                   while(!proceed){
                        System.out.println("*.Enter Email Address. *");
                        clientEmailAddress = sn.nextLine();
                        proceed = Validation.isword(clientEmailAddress);
@@ -102,6 +103,29 @@ public class ClientManagementSystem {
 
                     //Delete a Client
                     //Code goes here
+
+                    File tempFile = new File("temp.csv");
+
+                    System.out.println("Enter Client by ID to delete");
+                    String idToDelete = sn.nextLine();
+
+                    PrintWriter out = new PrintWriter(new FileWriter(tempFile));
+                    Files.lines(file.toPath())
+                        .filter(line -> !line.contains(idToDelete))
+                        .forEach(out::println);
+                    out.flush();
+                    out.close();
+                    tempFile.renameTo(file);
+
+
+
+
+
+
+
+
+
+
                     System.out.println("Client has been Deleted Successfully");
                     break;
                 case "4":
