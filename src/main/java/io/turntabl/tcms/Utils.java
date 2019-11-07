@@ -37,11 +37,11 @@ public class Utils {
     public static List<Client> searchByName(String search) {
 
         List<Client> matching = new ArrayList<>();
-//        for (Client s: readFromFile()){
-//            if (lavenstine(s.getName(),search) < 2 ){
-//                matching.add(s);
-//            }
-//        }
+        for (Client s: readFromFile()){
+            if (lavenstine(s.getName(),search) < 2 ){
+                matching.add(s);
+            }
+        }
         matching =  readFromFile().stream().filter(client -> lavenstine(client.getName(), search) <2).collect(Collectors.toList());
 //        System.out.println(matching);
         return matching;
