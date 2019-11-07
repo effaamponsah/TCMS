@@ -5,18 +5,23 @@ import java.io.IOException;
 
 public class Client extends Tcm{
 
+        private String id;
         private String name;
         private  String phone;
         private String email;
         private String address;
 
 
-        public Client(String name, String phone, String email, String address) throws IOException {
+        public Client(String id, String name, String phone, String email, String address) throws IOException {
+            this.id = id;
             this.name = name;
             this.phone = phone;
             this.email = email;
             this.address = address;
         }
+
+        public String getId(){return id;}
+        public String setId(){return this.id;}
 
         public String getName() {
             return name;
@@ -59,7 +64,8 @@ public class Client extends Tcm{
             FileWriter f = null;
 
             try {
-                f = new FileWriter("db.csv", true);
+                f = new FileWriter("clients.csv", true);
+                f.append(id);
                 f.append(name);
                 f.append(",");
                 f.append(address);

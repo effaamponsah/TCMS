@@ -4,10 +4,7 @@ package io.turntabl.tcms;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 public class TcmTest {
@@ -15,13 +12,13 @@ public class TcmTest {
 
     @Test
     public void testClient() throws IOException {
-        Client c = new Client("glo","54422","gaga@gmail","fafd3444");
-        assertEquals("glo", c.getName());
+        Client c = new Client("5454","francis","045355599","junior@gmail.com","fdsadda");
+        assertEquals("francis", c.getName());
     }
 
     @Test
     public void testWriteToFile() throws IOException {
-        Client c = new Client("Dennis", "3332", "kamponsah","This");
+        Client c = new Client("4643","chris","02340001111","tee@ymail.com","madina");
         c.writeToFile();
 
     }

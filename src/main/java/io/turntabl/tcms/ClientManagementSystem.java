@@ -64,7 +64,7 @@ public class ClientManagementSystem {
                         Scanner inputStream = new Scanner(file);
                         while(inputStream.hasNext()){
                             String data = inputStream.next();
-                            String[] values =data.split(",");
+                            String[] values =data.split(":");
                             System.out.println(data);
                         }
                         inputStream.close();

@@ -12,7 +12,7 @@ public class Tcm {
 
         public static void main(String[] args) throws IOException{
 
-                Client c = new Client("francis","345532","faf@gmail","fadd55555");
+                Client c = new Client("5432", "francis","345532","faf@gmail","fadd55555");
                 boolean exists = Files.exists(Paths.get("./db.csv"));
                 String fileName = "db.csv";
                 String line;
@@ -23,11 +23,12 @@ public class Tcm {
 
                 Scanner scanner = new Scanner(System.in);
 
+                String id = scanner.next();
                 String userName = scanner.next();
                 String phone = scanner.next();
                 String email = scanner.next();
                 String address = scanner.next();
-                Client newClient = new Client(userName, phone, email, address);
+                Client newClient = new Client(id, userName, phone, email, address);
                 newClient.writeToFile();
 
 
