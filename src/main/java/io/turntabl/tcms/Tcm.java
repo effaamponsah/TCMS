@@ -13,8 +13,8 @@ public class Tcm {
         public static void main(String[] args) throws IOException{
 
                 Client c = new Client("5432", "francis","345532","faf@gmail","fadd55555");
-                boolean exists = Files.exists(Paths.get("./db.csv"));
-                String fileName = "db.csv";
+                boolean exists = Files.exists(Paths.get("clients.csv"));
+                String fileName = "clients.csv";
                 String line;
                 int b = 0;
 
@@ -33,7 +33,7 @@ public class Tcm {
 
 
 
-                Scanner sc = new Scanner(new File("./db.csv"));
+                Scanner sc = new Scanner(new File("clients.csv"));
                 sc.useDelimiter(",");
                 while (sc.hasNext()) {
                         System.out.print(sc.next());
@@ -44,7 +44,7 @@ public class Tcm {
 
                 //System.out.println("Enter a search: ");
 
-                File file = new File("./db.csc");
+                File file = new File("clients.csc");
 
                 boolean found = false;
 

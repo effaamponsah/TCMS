@@ -66,6 +66,7 @@ public class Client extends Tcm{
             try {
                 f = new FileWriter("clients.csv", true);
                 f.append(id);
+                f.append(",");
                 f.append(name);
                 f.append(",");
                 f.append(address);
