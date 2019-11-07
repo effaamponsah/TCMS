@@ -48,7 +48,14 @@ public class ClientManagementSystem {
                     clientTelephoneNumber = sn.nextLine();
                     System.out.println("*.Enter Email Address. *");
                     clientEmailAddress = sn.nextLine();
-                    System.out.println("Details saved successfully.");
+                    boolean proceed = Validation.isword(clientEmailAddress);
+                   while(proceed == false){
+                       System.out.println("*.Enter Email Address. *");
+                       clientEmailAddress = sn.nextLine();
+                       proceed = Validation.isword(clientEmailAddress);
+                   }
+
+                   System.out.println("Details saved successfully.");
                     break;
                 case "2":
 //                   Client searchClient = searchClient.searchClient(1,"Jude");
