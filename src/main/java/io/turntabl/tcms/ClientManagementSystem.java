@@ -108,23 +108,19 @@ public class ClientManagementSystem {
 
                     System.out.println("Enter Client by ID to delete");
                     String idToDelete = sn.nextLine();
+                    try {
+                        PrintWriter out = new PrintWriter(new FileWriter(tempFile));
+                        Files.lines(file.toPath())
+                                .filter(line -> !line.contains(idToDelete))
+                                .forEach(out::println);
+                        out.flush();
+                        out.close();
+                        tempFile.renameTo(file);
 
-                    PrintWriter out = new PrintWriter(new FileWriter(tempFile));
-                    Files.lines(file.toPath())
-                        .filter(line -> !line.contains(idToDelete))
-                        .forEach(out::println);
-                    out.flush();
-                    out.close();
-                    tempFile.renameTo(file);
-
-
-
-
-
-
-
-
-
+                    }
+                    catch (Exception e){
+                        e.printStackTrace();
+                    }
 
                     System.out.println("Client has been Deleted Successfully");
                     break;
