@@ -60,7 +60,6 @@ public class ClientManagementSystem {
                     String address = sn.nextLine();
 
                     Client newClient = new Client(id, userName, phone, email, address);
-                    System.out.println(" Matched clients ");
                     newClient.writeToFile();
                     System.out.println("\n");
 
