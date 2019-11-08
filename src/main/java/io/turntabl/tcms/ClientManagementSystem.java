@@ -73,7 +73,7 @@ public class ClientManagementSystem {
                     System.out.println("\n");
 
                     boolean proceed = Validation.isword(clientEmailAddress=email);
-                   while(!proceed){
+                    while(proceed == false){
                        System.out.println("*.Enter Email Address. *");
                        clientEmailAddress = sn.nextLine();
                        proceed = Validation.isword(clientEmailAddress);
@@ -84,7 +84,11 @@ public class ClientManagementSystem {
                 case "2":
                     System.out.println("*.Please Enter your clients name*");
                     String searchName = sn.nextLine();
-                    System.out.println(Utils.searchByName(searchName));
+                    try {
+                        System.out.println(Utils.searchByName(searchName));
+                    } catch (Exception clientNotFound) {
+                        System.out.println(clientNotFound.getMessage());
+                    }
 //                   Client searchClient = searchClient.searchClient(1,"Jude");
 
                     //Search for a Client
@@ -94,18 +98,7 @@ public class ClientManagementSystem {
                     //List of Clients
                     String fileName = "clients.csv";
                     File file = new File(fileName);
-                    try{
-                        Scanner inputStream = new Scanner(file);
-                        while(inputStream.hasNext()){
-                            String data = inputStream.next();
-                            String[] values =data.split(",");
-                            System.out.println(data);
-                        }
-                        inputStream.close();
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-
+                    DataStore.getAllClients();
                     //Delete a Client
                     //Code goes here
 

@@ -24,7 +24,11 @@ public class UtilsTest {
        @Test
     public void testMatchingStrings() {
 //        assertEquals(Arrays.asList(c),Utils.searchByName("Dennis"));
-        Utils.searchByName("Francis");
-    }
+           try {
+               assertNotEquals("Dennis",Utils.searchByName("as"));
+           } catch (Exception clientNotFound) {
+               clientNotFound.getMessage();
+           }
+       }
 
 }

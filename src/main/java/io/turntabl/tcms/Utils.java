@@ -29,22 +29,16 @@ public class Utils {
             }
         }
         return costs[string2.length()];
-
-
     }
 
-
-    public static List<Client> searchByName(String search) {
-
-        List<Client> matching = new ArrayList<>();
-        for (Client s: readFromFile()){
-            if (lavenstine(s.getName(),search) < 2 ){
-                matching.add(s);
-            }
+    public static List<Client> searchByName(String search) throws ClientNotFoundError {
+        List<Client> matching =  readFromFile().stream().filter(client -> lavenstine(client.getName(), search) <2).collect(Collectors.toList());
+        if (matching.size() != 0){
+            return matching;
         }
-        matching =  readFromFile().stream().filter(client -> lavenstine(client.getName(), search) <2).collect(Collectors.toList());
-//        System.out.println(matching);
-        return matching;
+        else {
+            throw new ClientNotFoundError("No client found with that name \n \n");
+        }
     }
 
     public static List<Client> readFromFile(){

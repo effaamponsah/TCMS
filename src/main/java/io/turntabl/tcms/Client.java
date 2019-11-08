@@ -41,7 +41,6 @@ public class Client {
     public void writeToFile() {
 
             FileWriter f = null;
-
             try {
                 f = new FileWriter("clients.csv", true);
                 f.append(id);
