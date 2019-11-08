@@ -43,9 +43,7 @@ public class ClientManagementSystem {
             //Check the user input
             switch(userInput){
                 case "1":
-                    //Enter Client Details
-                    System.out.println("\033[1;32m*.Enter Client ID. *\033[0m");
-                    String id = sn.nextLine();
+                    //Enter Client Details;
 
                     System.out.println("\033[1;32m*.Enter Client Name. *\033[0m");
                     String userName = sn.nextLine();
@@ -59,7 +57,9 @@ public class ClientManagementSystem {
                     System.out.println("\033[1;32m*.Enter Address. *\033[0m");
                     String address = sn.nextLine();
 
-                    Client newClient = new Client(id, userName, phone, email, address);
+                    int line = Utils.length() +1;
+                    String newId = String.valueOf(line);
+                    Client newClient = new Client(newId, userName, phone, email, address);
                     newClient.writeToFile();
                     System.out.println("\n");
 

@@ -1,12 +1,10 @@
 package io.turntabl.tcms;
 
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -67,4 +65,30 @@ public class Utils {
         String address = attributes[2];
         return new Client(ID, name,phone,email,address);
     }
+
+    public static int length() {
+
+        File file = new File("clients.csv");
+        int lineNumberCount = 0;
+
+        if (file.exists()) {
+            try {
+                FileReader fr = new FileReader(file);
+                LineNumberReader lr = new LineNumberReader(fr);
+                try {
+                    while (lr.readLine() != null) {
+                        lineNumberCount++;
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return lineNumberCount;
+    }
+
 }
