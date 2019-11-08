@@ -10,6 +10,7 @@ import static jdk.nashorn.internal.objects.NativeArray.filter;
 public class ClientManagementSystem {
 
     public static void main (String[] args) {
+
         // declare a variable that will store the client details
         String userInput;
 
