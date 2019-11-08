@@ -5,12 +5,10 @@ import java.nio.file.Files;
 import java.util.List;
 import java.util.Scanner;
 
-import static jdk.nashorn.internal.objects.NativeArray.filter;
 
 public class ClientManagementSystem {
 
     public static void main (String[] args) {
-
         // declare a variable that will store the client details
         String userInput;
 
@@ -21,16 +19,9 @@ public class ClientManagementSystem {
         String clientEmailAddress;
 
 
+
         //declare a scanner object to read the command line input by user
         Scanner sn = new Scanner(System.in);
-
-        //String id = sn.next();
-        //String userName = sn.next();
-        //String phone = sn.next();
-        //String email = sn.next();
-        //String address = sn.next();
-        //Client newClient = new Client(id, userName, phone, email, address);
-        //newClient.writeToFile();
 
         //loop the utility in loop until the user makes the choice to exit
         while(true){
@@ -38,10 +29,11 @@ public class ClientManagementSystem {
             System.out.println("*****Welcome, Sam Moorhouse.*****");
 
             System.out.println("*****Available Options*****");
-            System.out.println("*. Press 1 to Enter User Details");
-            System.out.println("*. Press 2 to Search for a Client");
-            System.out.println("*. Press 3 to Delete a User");
-            System.out.println("*. Press 4 to Exit from the application");
+            System.out.println("*. Press 1 to Enter User Details.");
+            System.out.println("*. Press 2 to View List of Clients.");
+            System.out.println("*. Press 3 to Search for a Client");
+            System.out.println("*. Press 4 to Delete a User.");
+            System.out.println("*. Press 5 to Exit from the application.");
             // Prompt the user to make a choice
             System.out.println("Enter your choice:");
 
@@ -82,6 +74,9 @@ public class ClientManagementSystem {
                    System.out.println("Details saved successfully.");
                     break;
                 case "2":
+                    DataStore.getAllClients();
+                    break;
+                case "3":
                     System.out.println("*.Please Enter your clients name*");
                     String searchName = sn.nextLine();
                     try {
@@ -89,40 +84,21 @@ public class ClientManagementSystem {
                     } catch (Exception clientNotFound) {
                         System.out.println(clientNotFound.getMessage());
                     }
-//                   Client searchClient = searchClient.searchClient(1,"Jude");
-
-                    //Search for a Client
-//                    System.out.println("Client found or not ...");
                     break;
-                case "3":
+                case "4":
                     //List of Clients
                     String fileName = "clients.csv";
                     File file = new File(fileName);
                     DataStore.getAllClients();
-                    //Delete a Client
-                    //Code goes here
 
-                    File tempFile = new File("temp.csv");
+                    //Delete a Client
 
                     System.out.println("Enter Client by ID to delete");
                     String idToDelete = sn.nextLine();
-                    try {
-                        PrintWriter out = new PrintWriter(new FileWriter(tempFile));
-                        Files.lines(file.toPath())
-                                .filter(line -> !line.contains(idToDelete))
-                                .forEach(out::println);
-                        out.flush();
-                        out.close();
-                        tempFile.renameTo(file);
-
-                    }
-                    catch (Exception e){
-                        e.printStackTrace();
-                    }
-
+                    DataStore.deleteClients(idToDelete);
                     System.out.println("Client has been Deleted Successfully");
                     break;
-                case "4":
+                case "5":
                     //Exit from the application
                     System.out.println("Exiting...");
                     System.exit(0);
