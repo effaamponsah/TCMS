@@ -98,18 +98,7 @@ public class ClientManagementSystem {
                     //List of Clients
                     String fileName = "clients.csv";
                     File file = new File(fileName);
-//                    try{
-//                        Scanner inputStream = new Scanner(file);
-//                        while(inputStream.hasNext()){
-//                            String data = inputStream.nextLine();
-//                            String[] values =data.split(",");
-//                            System.out.println(data);
-//                        }
-//                        inputStream.close();
-//                    } catch (FileNotFoundException e) {
-//                        e.printStackTrace();
-//                    }
-
+                    DataStore.getAllClients();
                     //Delete a Client
                     //Code goes here
 
