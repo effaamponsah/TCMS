@@ -29,7 +29,7 @@ public class ClientManagementSystem {
             System.out.println("*****Welcome, Sam Moorhouse.*****");
 
             System.out.println("*****Available Options*****");
-            System.out.println("*. Press 1 to Enter User Details.");
+            System.out.println("*.\033[1;31m Press 1 to Enter User Details.\033[0m");
             System.out.println("*. Press 2 to View List of Clients.");
             System.out.println("*. Press 3 to Search for a Client");
             System.out.println("*. Press 4 to Delete a User.");
