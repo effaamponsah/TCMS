@@ -32,7 +32,7 @@ public class Utils {
     }
 
     public static List<Client> searchByName(String search) throws ClientNotFoundError {
-        List<Client> matching =  readFromFile().stream().filter(client -> lavenstine(client.getName(), search) <2).collect(Collectors.toList());
+        List<Client> matching =  readFromFile().stream().filter(client -> lavenstine(firstWord(client.getName()), search) <2).collect(Collectors.toList());
         if (matching.size() != 0){
             return matching;
         }
@@ -66,5 +66,16 @@ public class Utils {
         String email = attributes[4];
         String address = attributes[2];
         return new Client(ID, name,phone,email,address);
+    }
+
+    public static String firstWord(String input) {
+        String result = "";  // Return empty string if no space found
+        for(int i = 0; i < input.length(); i++) {
+            if(input.charAt(i) == ' ') {
+                result = input.substring(0, i);
+                break; // because we're done
+            }
+        }
+        return result;
     }
 }

@@ -30,5 +30,8 @@ public class UtilsTest {
                clientNotFound.getMessage();
            }
        }
-
+       @Test
+    public void testFirstName(){
+        assertEquals("Dennis", Utils.firstWord("Dennis Effa"));
+       }
 }
