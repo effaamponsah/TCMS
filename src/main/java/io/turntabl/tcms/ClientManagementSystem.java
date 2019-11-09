@@ -75,14 +75,41 @@ public class ClientManagementSystem {
                 case "2":
                     DataStore.getAllClients();
                     break;
+//                case "3":
+//                    System.out.println("\033[1;37m*. Enter your clients name*\033[0m");
+//                    String searchName = sn.nextLine();
+//                    try {
+//                        System.out.println(Utils.searchByName(searchName));
+//                    } catch (Exception clientNotFound) {
+//                        System.out.println(clientNotFound.getMessage());
+//                    }
+//                    break;
                 case "3":
                     System.out.println("\033[1;37m*. Enter your clients name*\033[0m");
                     String searchName = sn.nextLine();
                     try {
-                        System.out.println(Utils.searchByName(searchName));
+                        System.out.println("---------------------------------------------------------------------------------------------");
+                        System.out.printf("%5s %20s %15s %20s %20s", "CLIENT_ID", "CLIENT_NAMES", "PHONE", "EMAIL", "ADDRESS");
+                        System.out.println();
+                        System.out.println("---------------------------------------------------------------------------------------------");
+//                        System.out.println(Utils.searchByName(searchName));
+                        for(Client client:Utils.searchByName(searchName) ){
+                            System.out.format("%8s %20s %20s %20s %20s",
+                                    client.getId(), client.getName(), client.getPhone(), client.getEmail(), client.getAddress());
+                            System.out.println();
+                        }
+                        System.out.println("---------------------------------------------------------------------------------------------");
+                        System.out.println();
+                        System.out.println();
+
                     } catch (Exception clientNotFound) {
-                        System.out.println(clientNotFound.getMessage());
+                        System.err.println(clientNotFound.getMessage());
+                        System.out.println();
                     }
+//                   Client searchClient = searchClient.searchClient(1,"Jude");
+
+                    //Search for a Client
+//                    System.out.println("Clienqt found or not ...");
                     break;
                 case "4":
                     //List of Clients
