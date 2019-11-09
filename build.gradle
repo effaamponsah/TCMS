@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group 'turntabl'
@@ -13,4 +14,27 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+task hello {
+    doLast {
+        println 'Hello world!'
+    }
+}
+
+application {
+    mainClassName = 'io.turntabl.tcms.ClientManagementSystem'
+}
+
+task create(type: Copy) {
+    from './clients.csv'
+    into 'build/scripts'
+}
+tasks.startScripts {
+    doLast {
+        def scriptFile = file "${outputDir}/${applicationName}"
+        scriptFile.text = scriptFile.text.replace('CLASSPATH=$APP_HOME/lib', 'CLASSPATH=$APP_HOME/libs')
+    }
+}
+application {
+    mainClassName = 'io.turntabl.tcms.ClientManagementSystem'
 }

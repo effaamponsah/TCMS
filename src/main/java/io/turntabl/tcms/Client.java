@@ -11,7 +11,6 @@ public class Client {
         private String email;
         private String address;
 
-
         public Client(String id, String name, String phone, String email, String address) {
             this.id = id;
             this.name = name;
@@ -27,15 +26,17 @@ public class Client {
     public String getId() {
         return id;
     }
-    @Override
-    public String toString() {
-        return "Client Details:  " +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                "\n";
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public void writeToFile() {
