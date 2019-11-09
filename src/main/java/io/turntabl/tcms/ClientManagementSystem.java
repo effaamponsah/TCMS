@@ -73,17 +73,21 @@ public class ClientManagementSystem {
                    System.out.println("\033[1;37mDetails saved successfully.\033[0m");
                     break;
                 case "2":
-                    DataStore.getAllClients();
+//                    DataStore.getAllClients();
+//                    Utils.readFromFile();
+                    System.out.println("---------------------------------------------------------------------------------------------");
+                    System.out.printf("%5s %20s %15s %20s %20s", "CLIENT_ID", "CLIENT_NAMES", "PHONE", "EMAIL", "ADDRESS");
+                    System.out.println();
+                    System.out.println("---------------------------------------------------------------------------------------------");
+                    for (Client client: Utils.readFromFile()){
+                        System.out.format("%8s %20s %20s %20s %20s",
+                                client.getId(), client.getName(), client.getPhone(), client.getEmail(), client.getAddress());
+                        System.out.println();
+                    }
+                    System.out.println("---------------------------------------------------------------------------------------------");
+                    System.out.println();
+                    System.out.println();
                     break;
-//                case "3":
-//                    System.out.println("\033[1;37m*. Enter your clients name*\033[0m");
-//                    String searchName = sn.nextLine();
-//                    try {
-//                        System.out.println(Utils.searchByName(searchName));
-//                    } catch (Exception clientNotFound) {
-//                        System.out.println(clientNotFound.getMessage());
-//                    }
-//                    break;
                 case "3":
                     System.out.println("\033[1;37m*. Enter your clients name*\033[0m");
                     String searchName = sn.nextLine();
