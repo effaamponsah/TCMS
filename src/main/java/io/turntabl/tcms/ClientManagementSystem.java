@@ -1,11 +1,11 @@
 package io.turntabl.tcms;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.nio.file.Files;
-import java.util.List;
 import java.util.Scanner;
-
-import static jdk.nashorn.internal.objects.NativeArray.filter;
 
 public class ClientManagementSystem {
 
@@ -13,26 +13,11 @@ public class ClientManagementSystem {
 
         // declare a variable that will store the client details
         String userInput;
-
-        String clientId;
-        String clientName;
-        String clientAddress;
-        String clientTelephoneNumber;
         String clientEmailAddress;
-
 
         //declare a scanner object to read the command line input by user
         Scanner sn = new Scanner(System.in);
 
-        //String id = sn.next();
-        //String userName = sn.next();
-        //String phone = sn.next();
-        //String email = sn.next();
-        //String address = sn.next();
-        //Client newClient = new Client(id, userName, phone, email, address);
-        //newClient.writeToFile();
-
-        //loop the utility in loop until the user makes the choice to exit
         while(true){
             //Print the options for the user to choose from
             System.out.println("*****Welcome, Sam Moorhouse.*****");
@@ -42,6 +27,7 @@ public class ClientManagementSystem {
             System.out.println("*. Press 2 to Search for a Client");
             System.out.println("*. Press 3 to Delete a User");
             System.out.println("*. Press 4 to Exit from the application");
+
             // Prompt the user to make a choice
             System.out.println("Enter your choice:");
 
@@ -49,7 +35,7 @@ public class ClientManagementSystem {
             userInput = sn.nextLine();
 
             //Check the user input
-            switch(userInput){
+            switch(userInput) {
                 case "1":
                     //Enter Client Details
                     System.out.println("*.Enter Client ID. *");
@@ -72,14 +58,14 @@ public class ClientManagementSystem {
                     newClient.writeToFile();
                     System.out.println("\n");
 
-                    boolean proceed = Validation.isword(clientEmailAddress=email);
-                   while(!proceed){
-                       System.out.println("*.Enter Email Address. *");
-                       clientEmailAddress = sn.nextLine();
-                       proceed = Validation.isword(clientEmailAddress);
-                   }
+                    boolean proceed = Validation.isword(clientEmailAddress = email);
+                    while (!proceed) {
+                        System.out.println("*.Enter Email Address. *");
+                        clientEmailAddress = sn.nextLine();
+                        proceed = Validation.isword(clientEmailAddress);
+                    }
 
-                   System.out.println("Details saved successfully.");
+                    System.out.println("Details saved successfully.");
                     break;
                 case "2":
                     System.out.println("*.Please Enter your clients name*");
@@ -94,11 +80,10 @@ public class ClientManagementSystem {
                     //List of Clients
                     String fileName = "clients.csv";
                     File file = new File(fileName);
-                    try{
+                    try {
                         Scanner inputStream = new Scanner(file);
-                        while(inputStream.hasNext()){
-                            String data = inputStream.next();
-                            String[] values =data.split(",");
+                        while (inputStream.hasNext()) {
+                            String data = inputStream.nextLine();
                             System.out.println(data);
                         }
                         inputStream.close();
@@ -113,22 +98,30 @@ public class ClientManagementSystem {
 
                     System.out.println("Enter Client by ID to delete");
                     String idToDelete = sn.nextLine();
-                    try {
-                        PrintWriter out = new PrintWriter(new FileWriter(tempFile));
-                        Files.lines(file.toPath())
-                                .filter(line -> !line.contains(idToDelete))
-                                .forEach(out::println);
-                        out.flush();
-                        out.close();
-                        tempFile.renameTo(file);
 
-                    }
-                    catch (Exception e){
-                        e.printStackTrace();
-                    }
+                    if( idToDelete != null && idToDelete.length() != 0) {
 
-                    System.out.println("Client has been Deleted Successfully");
-                    break;
+                        try {
+
+                            PrintWriter out = new PrintWriter(new FileWriter(tempFile));
+                            Files.lines(file.toPath())
+                                    .filter(line -> !line.contains(idToDelete))
+                                    .forEach(out::println);
+                            out.flush();
+                            out.close();
+                            tempFile.renameTo(file);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        System.out.println("Client has been Deleted Successfully");
+                    }else {
+                        System.out.println("Empty");
+                    }
+                        break;
+
+
                 case "4":
                     //Exit from the application
                     System.out.println("Exiting...");
