@@ -26,21 +26,42 @@ public class DataStore {
     }
 
     public static void deleteClients(String id) {
-        String fileName = "clients.csv";
-        File file = new File(fileName);
-        File tempFile = new File("temp.csv");
-        try {
-            PrintWriter out = new PrintWriter(new FileWriter(tempFile));
-            Files.lines(file.toPath())
-                    .filter(line -> !line.contains(id))
-                    .forEach(out::println);
-            out.flush();
-            out.close();
-            tempFile.renameTo(file);
 
-        } catch (Exception e) {
+        File file = new File(filePath);
+/*
+        try {
+            Scanner inputStream = new Scanner(file);
+            while (inputStream.hasNext()) {
+                String data = inputStream.nextLine();
+                System.out.println(data);
+            }
+            inputStream.close();
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+*/
+        //Delete a Client
+        //Code goes here
+
+        File tempFile = new File("temp.csv");
+
+       String idToDelete = id;
+
+
+
+            try {
+
+                PrintWriter out = new PrintWriter(new FileWriter(tempFile));
+                Files.lines(file.toPath())
+                        .filter(line -> !line.contains(idToDelete))
+                        .forEach(out::println);
+                out.flush();
+                out.close();
+                tempFile.renameTo(file);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
     }
 }
 
