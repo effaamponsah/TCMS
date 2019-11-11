@@ -60,7 +60,13 @@ public class ClientManagementSystem {
                     int line = Utils.length() +1;
                     String newId = String.valueOf(line);
                     Client newClient = new Client(newId, userName, phone, email, address);
-                    newClient.writeToFile();
+                   try {
+                       Utils.duplicateUser(newClient);
+                       newClient.writeToFile();
+                   } catch (DuplicateClienException e) {
+                       System.err.println(e.getMessage());
+                   }
+
                     System.out.println("\n");
 
                     boolean proceed = Validation.isword(clientEmailAddress=email);
