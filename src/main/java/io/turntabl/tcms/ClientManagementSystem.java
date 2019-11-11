@@ -127,7 +127,19 @@ public class ClientManagementSystem {
 
 
                 case "4":
-                    DataStore.getAllClients();
+//                    DataStore.getAllClients();
+                    System.out.println("---------------------------------------------------------------------------------------------");
+                    System.out.printf("%5s %20s %15s %20s %20s", "CLIENT_ID", "CLIENT_NAMES", "PHONE", "EMAIL", "ADDRESS");
+                    System.out.println();
+                    System.out.println("---------------------------------------------------------------------------------------------");
+                    for (Client client: Utils.readFromFile()){
+                        System.out.format("%8s %20s %20s %20s %20s",
+                                client.getId(), client.getName(), client.getPhone(), client.getEmail(), client.getAddress());
+                        System.out.println();
+                    }
+                    System.out.println("---------------------------------------------------------------------------------------------");
+                    System.out.println();
+                    System.out.println();
                     System.out.println("\033[1;37m*. Enter Client ID*\033[0m");
                     String idToDelete = sn.nextLine();
 
