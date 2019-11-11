@@ -101,4 +101,30 @@ public class Utils {
         return lineNumberCount;
     }
 
+    public static boolean duplicateUser(Client client) throws DuplicateClienException{
+                for (Client c : Utils.readFromFile()) {
+                    if (c.getName().equals(client.getName())){
+                        if (c.getEmail().equals(client.getEmail())){
+                            if (c.getPhone().equals(client.getPhone())){
+                                if (c.getAddress().equals(client.getAddress())){
+                                    throw new DuplicateClienException("Client found with same details aborting operation....");
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                            else {
+                                return false;
+                            }
+                        }
+                        else {
+                            return false;
+                        }
+                }
+                    else {
+                        return false;
+                    }
+                }
+        return true;
+    }
 }
