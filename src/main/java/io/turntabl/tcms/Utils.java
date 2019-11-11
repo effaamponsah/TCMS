@@ -30,7 +30,7 @@ public class Utils {
     }
 
     public static List<Client> searchByName(String search) throws ClientNotFoundError {
-        List<Client> matching =  readFromFile().stream().filter(client -> lavenstine(client.getName(), search) <2).collect(Collectors.toList());
+        List<Client> matching =  readFromFile().stream().filter(client -> lavenstine(firstWord(client.getName()), search) <2).collect(Collectors.toList());
         if (matching.size() != 0){
             return matching;
         }
@@ -66,6 +66,16 @@ public class Utils {
         return new Client(ID, name,phone,email,address);
     }
 
+    public static String firstWord(String input) {
+        String result = "";  // Return empty string if no space found
+        for(int i = 0; i < input.length(); i++) {
+            if(input.charAt(i) == ' ') {
+                result = input.substring(0, i);
+                break; // because we're done
+            }
+        }
+        return result;
+    }
     public static int length() {
 
         File file = new File("clients.csv");
@@ -91,4 +101,30 @@ public class Utils {
         return lineNumberCount;
     }
 
+    public static boolean duplicateUser(Client client) throws DuplicateClienException{
+                for (Client c : Utils.readFromFile()) {
+                    if (c.getName().equals(client.getName())){
+                        if (c.getEmail().equals(client.getEmail())){
+                            if (c.getPhone().equals(client.getPhone())){
+                                if (c.getAddress().equals(client.getAddress())){
+                                    throw new DuplicateClienException("Client found with same details aborting operation....");
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                            else {
+                                return false;
+                            }
+                        }
+                        else {
+                            return false;
+                        }
+                }
+                    else {
+                        return false;
+                    }
+                }
+        return true;
+    }
 }

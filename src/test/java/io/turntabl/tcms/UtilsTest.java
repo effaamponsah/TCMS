@@ -30,5 +30,17 @@ public class UtilsTest {
                clientNotFound.getMessage();
            }
        }
-
+       @Test
+    public void testFirstName(){
+        assertEquals("Dennis", Utils.firstWord("Dennis Effa"));
+       }
+       @Test
+    public void duplicateUser(){
+           Client cc = new Client("234","Dennis","123","abc","abc");
+           try{
+               System.out.println(Utils.duplicateUser(cc));
+           } catch (DuplicateClienException e) {
+               e.getMessage();
+           }
+       }
 }

@@ -55,7 +55,13 @@ public class ClientManagementSystem {
                     int line = Utils.length() +1;
                     String newId = String.valueOf(line);
                     Client newClient = new Client(newId, userName, phone, email, address);
-                    newClient.writeToFile();
+                   try {
+                       Utils.duplicateUser(newClient);
+                       newClient.writeToFile();
+                   } catch (DuplicateClienException e) {
+                       System.err.println(e.getMessage());
+                   }
+
                     System.out.println("\n");
 
 
@@ -73,7 +79,20 @@ public class ClientManagementSystem {
 
 
                 case "2":
-                    DataStore.getAllClients();
+//                    DataStore.getAllClients();
+//                    Utils.readFromFile();
+                    System.out.println("---------------------------------------------------------------------------------------------");
+                    System.out.printf("%5s %20s %15s %20s %20s", "CLIENT_ID", "CLIENT_NAMES", "PHONE", "EMAIL", "ADDRESS");
+                    System.out.println();
+                    System.out.println("---------------------------------------------------------------------------------------------");
+                    for (Client client: Utils.readFromFile()){
+                        System.out.format("%8s %20s %20s %20s %20s",
+                                client.getId(), client.getName(), client.getPhone(), client.getEmail(), client.getAddress());
+                        System.out.println();
+                    }
+                    System.out.println("---------------------------------------------------------------------------------------------");
+                    System.out.println();
+                    System.out.println();
                     break;
 
 
@@ -81,16 +100,46 @@ public class ClientManagementSystem {
                     System.out.println("\033[1;37m*. Enter your clients name*\033[0m");
                     String searchName = sn.nextLine();
                     try {
-                        System.out.println(Utils.searchByName(searchName));
+                        System.out.println("---------------------------------------------------------------------------------------------");
+                        System.out.printf("%5s %20s %15s %20s %20s", "CLIENT_ID", "CLIENT_NAMES", "PHONE", "EMAIL", "ADDRESS");
+                        System.out.println();
+                        System.out.println("---------------------------------------------------------------------------------------------");
+//                        System.out.println(Utils.searchByName(searchName));
+                        for(Client client:Utils.searchByName(searchName) ){
+                            System.out.format("%8s %20s %20s %20s %20s",
+                                    client.getId(), client.getName(), client.getPhone(), client.getEmail(), client.getAddress());
+                            System.out.println();
+                        }
+                        System.out.println("---------------------------------------------------------------------------------------------");
+                        System.out.println();
+                        System.out.println();
+
                     } catch (Exception clientNotFound) {
-                        System.out.println(clientNotFound.getMessage());
+                        System.err.println(clientNotFound.getMessage());
+                        System.out.println();
                     }
+//                   Client searchClient = searchClient.searchClient(1,"Jude");
+
+                    //Search for a Client
+//                    System.out.println("Clienqt found or not ...");
                     break;
 
 
 
                 case "4":
-                    DataStore.getAllClients();
+//                    DataStore.getAllClients();
+                    System.out.println("---------------------------------------------------------------------------------------------");
+                    System.out.printf("%5s %20s %15s %20s %20s", "CLIENT_ID", "CLIENT_NAMES", "PHONE", "EMAIL", "ADDRESS");
+                    System.out.println();
+                    System.out.println("---------------------------------------------------------------------------------------------");
+                    for (Client client: Utils.readFromFile()){
+                        System.out.format("%8s %20s %20s %20s %20s",
+                                client.getId(), client.getName(), client.getPhone(), client.getEmail(), client.getAddress());
+                        System.out.println();
+                    }
+                    System.out.println("---------------------------------------------------------------------------------------------");
+                    System.out.println();
+                    System.out.println();
                     System.out.println("\033[1;37m*. Enter Client ID*\033[0m");
                     String idToDelete = sn.nextLine();
 
