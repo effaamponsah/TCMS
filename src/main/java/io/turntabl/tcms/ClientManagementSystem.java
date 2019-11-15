@@ -105,7 +105,7 @@ public class ClientManagementSystem {
                         System.out.println();
                         System.out.println("---------------------------------------------------------------------------------------------");
 //                        System.out.println(Utils.searchByName(searchName));
-                        for(Client client:Utils.searchByName(searchName) ){
+                        for(Client client:Utils.search(searchName) ){
                             System.out.format("%8s %20s %20s %20s %20s",
                                     client.getId(), client.getName(), client.getPhone(), client.getEmail(), client.getAddress());
                             System.out.println();

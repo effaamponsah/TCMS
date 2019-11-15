@@ -4,11 +4,14 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Utils {
+    private static final String dbUrl = "jdbc:h2:./tcms";
+
     public static int lavenstine(String string1, String string2){
         string1 = string1.toLowerCase();
         string2 = string2.toLowerCase();
@@ -37,6 +40,35 @@ public class Utils {
         else {
             throw new ClientNotFoundError("No client found with that name \n \n");
         }
+    }
+
+    public static List<Client> search(String name) throws ClientNotFoundError, ClassNotFoundException {
+        List<Client> matchedClients = new ArrayList<>();
+
+        Class.forName("org.h2.Driver");
+        try(Connection db = DriverManager.getConnection(dbUrl,"","")) {
+//            Statement s = db.createStatement();
+//            ResultSet rs = s.executeQuery("select * from client limit 3;");
+
+
+            PreparedStatement ps = db.prepareStatement("select * from client where fName like ?;");
+            ps.clearParameters();
+            ps.setString(1, "%"+name+"%");
+
+            ResultSet rs = ps.executeQuery();
+//                    System.out.println("---------------------------------------------------------------------------------------------");
+//                    System.out.printf("%5s %15s %15s %10s %10s", "CUST_ID", "CONTACT_NAME",  "CITY", "COUNTRY", "PHONE");
+//                    System.out.println();
+//                    System.out.println("---------------------------------------------------------------------------------------------");
+            while(rs.next()){
+                System.out.format("%5s %17s %15s %10s %15s", rs.getString("ID"), rs.getString("fName"), rs.getString("lName"), rs.getString("address"), rs.getString("email"));
+                System.out.println();
+            }
+        } catch (SQLException e) {
+            System.err.println("Connection error "+e);
+        } ;
+
+        return matchedClients;
     }
 
     public static List<Client> readFromFile(){
