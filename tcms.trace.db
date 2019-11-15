@@ -725,3 +725,7 @@ insert into client(fName,lName,address,telephone,email) values('Bill', 'Christy'
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+11-15 15:38:45 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: No data is available [2000-148]
+11-15 15:39:26 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: No data is available [2000-148]
