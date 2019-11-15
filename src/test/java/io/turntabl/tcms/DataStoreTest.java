@@ -59,7 +59,7 @@ public class DataStoreTest {
             Class.forName("org.h2.Driver");
             try (Connection db = DriverManager.getConnection(dbUrl, "", "")) {
                 Statement s = db.createStatement();
-                boolean rs = s.execute("update client set fName = 'Francis' where ID =1");
+                boolean rs = s.execute("update client set name = 'Francis' where ID =1");
 
 
             } catch (SQLException e) {
@@ -88,7 +88,7 @@ public class DataStoreTest {
                     Statement s = db.createStatement();
                     ResultSet rs = s.executeQuery("select * from client;");
                     while(rs.next()){
-                        System.out.format("%5s %17s %15s %10s %15s", rs.getString("ID"), rs.getString("fName"), rs.getString("lName"), rs.getString("address"), rs.getString("email"));
+                        System.out.format("%5s %17s %10s %15s", rs.getString("ID"), rs.getString("name"), rs.getString("address"), rs.getString("email"));
                         System.out.println();
                     }
                 } catch (SQLException e) {
@@ -101,9 +101,9 @@ public class DataStoreTest {
         Class.forName("org.h2.Driver");
         try(Connection db = DriverManager.getConnection(dbUrl,"","")) {
             Statement s = db.createStatement();
-            ResultSet rs = s.executeQuery("select fName from client where ID='1';");
+            ResultSet rs = s.executeQuery("select name from client where ID='1';");
             while(rs.next()){
-                assertEquals("Dennis", rs.getString("fName"));
+                assertEquals("Dennis Christy", rs.getString("name"));
             }
         } catch (SQLException e) {
             e.getStackTrace();
@@ -116,7 +116,7 @@ public class DataStoreTest {
         Class.forName("org.h2.Driver");
         try (Connection db = DriverManager.getConnection(dbUrl, "", "")) {
             Statement s = db.createStatement();
-            boolean rs = s.execute("insert into client(fName,lName,address,telephone,email) values('yes', 'no', 'Burkina','0275876542', 'francis@gmail.com')");
+            boolean rs = s.execute("insert into client(name,address,telephone,email) values('yes', 'Burkina','0275876542', 'francis@gmail.com')");
             System.out.println(rs);
 
         } catch (SQLException e) {

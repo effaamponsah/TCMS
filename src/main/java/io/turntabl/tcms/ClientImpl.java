@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ClientImpl implements ClientDAO {
     private List<ClientTO> clients = new ArrayList<>();
-    String databaseURL = "";
+    String databaseURL = "jdbc:postgresql:TCMS";
 
 
     @Override

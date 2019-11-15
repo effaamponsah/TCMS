@@ -6,11 +6,15 @@ echo "Making sure project is clean"
 echo "Runnig Gradlew Test"
 ./gradlew test
 
-echo "Building your project"
-./gradlew build
+createdb testing1234 && echo -e "Database successfully created" && psql -d  testing1234  < testscript.sql && echo "Tables created successfully"
 
-./gradlew create
 
-cd build/scripts
 
-./gradle-travis-sample
+#echo "Building your project"
+#./gradlew build
+#
+#./gradlew create
+#
+#cd build/scripts
+#
+#./gradle-travis-sample
