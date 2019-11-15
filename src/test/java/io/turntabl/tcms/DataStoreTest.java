@@ -1,6 +1,7 @@
 package io.turntabl.tcms;
 
 import org.h2.util.ScriptReader;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -14,7 +15,7 @@ public class DataStoreTest {
     private static final String dbUrl = "jdbc:h2:tcms";
     private static final String testScriptPath = "testscript.sql";
 
-    @Test
+    @Before
     public void testInMemoryDb() throws ClassNotFoundException {
         BufferedReader reader = null;
             Class.forName("org.h2.Driver");
